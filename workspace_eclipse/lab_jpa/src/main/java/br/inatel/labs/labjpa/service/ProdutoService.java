@@ -10,7 +10,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 @Service //Classe onde colocamos nossas regras de negocio
-@Transactional //Para fazer escrita no banco
+@Transactional //Para fazer escrita no banco, preciso de uma transição nas funções
 public class ProdutoService {
 	
 	@PersistenceContext

@@ -24,10 +24,20 @@ public class Fornecedor {
 	@NotNull
 	@Size(min = 2, max = 200)
 	private String razaoSocial;
+	
+	//Gerando Construtores
+	public Fornecedor() {
+		super();
+	}
+	
+	public Fornecedor(String razaoSocial) {
+		super();
+		this.razaoSocial = razaoSocial;
+	}
 
 	public Long getId() {
 		return id;
-	}
+	}	
 
 	public void setId(Long id) {
 		this.id = id;

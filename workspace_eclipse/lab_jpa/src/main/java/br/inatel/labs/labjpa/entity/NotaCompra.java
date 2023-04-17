@@ -29,8 +29,8 @@ public class NotaCompra {
 	
 	@NotNull
 	@Past
-	private LocalDate dataEmissao;
-	
+	private LocalDate dataEmissao;	
+
 	public BigDecimal getCalculoTotalNota() {
 		//stream é uma estrutura de dados para manipular uma lista
 		BigDecimal total = this.listaNotaCompraItem.stream()
@@ -40,10 +40,22 @@ public class NotaCompra {
 		
 		return total;
 	}
+	
+	//Gerando Construtores
+	public NotaCompra() {
+		super();
+	}
+	
+	public NotaCompra(Fornecedor fornecedor, LocalDate dataEmissao) {
+		super();
+		this.fornecedor = fornecedor;
+		this.dataEmissao = dataEmissao;
+	}
+	
 
 	public Long getId() {
 		return id;
-	}
+	}	
 
 	public void setId(Long id) {
 		this.id = id;
