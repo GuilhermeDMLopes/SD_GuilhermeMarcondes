@@ -17,7 +17,7 @@ import br.inatel.labs.labjpa.service.NotaCompraService;
 import br.inatel.labs.labjpa.service.ProdutoService;
 
 //Para mudar o nome de uma classe usamos ctrl + 1 nela
-@SpringBootTest
+//@SpringBootTest
 class DataLoader {
 
 	//Injetando artefato do spring
@@ -30,7 +30,7 @@ class DataLoader {
 	@Autowired
 	private NotaCompraService notaCompraService;
 	
-	@Test
+//@Test
 	void load() {
 		//Instanciando produtos
 		Produto p1 = new Produto("Furadeira");

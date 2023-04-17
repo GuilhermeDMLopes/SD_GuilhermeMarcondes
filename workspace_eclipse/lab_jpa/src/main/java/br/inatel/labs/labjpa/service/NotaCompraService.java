@@ -22,19 +22,11 @@ public class NotaCompraService {
 		return nc;
 	}
 	
-	public NotaCompraItem salvarNotaCompraItem(NotaCompraItem item) {
-		return em.merge(item);
-	}
-	
 	public NotaCompra buscarNotaCompraPeloId(Long id) {
 		NotaCompra notaCompraEncontrado = em.find(NotaCompra.class, id);
 		return notaCompraEncontrado;
 	}
-	
-	public NotaCompraItem buscarNotaCompraItemPeloId(Long id) {
-		return em.find(NotaCompraItem.class, id);
-	}
-	
+		
 	public List<NotaCompra> listarNotaCompra() {
 		//String sql = "SELECT * FROM NotaCompra";
 		//jpql = Java Persistence Query Language
@@ -42,15 +34,31 @@ public class NotaCompraService {
 		List<NotaCompra> notaCompra = em.createQuery(jpql, NotaCompra.class).getResultList();
 		//Podemos substituir por return em.createQuery("SELECT nc FROM NotaCompra nc", Fornecedor.class).getResultList())
 		return notaCompra;
+	}	
+	
+	public void remover(NotaCompra nc) {
+		//Podemos substituior por em.remove(em.merge(f));
+		nc = em.merge(nc);
+		em.remove(nc);
+	}	
+
+	public NotaCompraItem salvarNotaCompraItem(NotaCompraItem item) {
+		return em.merge(item);
+	}	
+	
+	public NotaCompraItem buscarNotaCompraItemPeloId(Long id) {
+		NotaCompraItem notaCompraItemEncontrado = em.find(NotaCompraItem.class, id);
+		return notaCompraItemEncontrado;
 	}
 	
 	public List<NotaCompraItem> listarNotaCompraItem() {
 		return em.createQuery("SELECT nci FROM NotaCompraItem nci", NotaCompraItem.class).getResultList();
 	}
 	
-	public void remover(NotaCompra nc) {
-		//Podemos substituior por em.remove(em.merge(f));
-		nc = em.merge(nc);
-		em.remove(nc);
+	public NotaCompra buscarNotaCompraPeloIdComListaIntem(Long id) {
+		NotaCompra notaCompra = em.find(NotaCompra.class, id);
+		notaCompra.getListaNotaCompraItem().size();
+		return notaCompra;
 	}
+	
 }
